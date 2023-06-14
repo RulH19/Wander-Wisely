@@ -51,34 +51,37 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rv_recommendation" />
+
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/allCategory"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
+                android:layout_marginStart="100dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="32dp"
                 android:src="@drawable/alltourist"
-                app:layout_constraintEnd_toStartOf="@+id/BeachCategory"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_category" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/BeachCategory"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
+                android:layout_marginStart="40dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="32dp"
                 android:src="@drawable/pantai"
-                app:layout_constraintEnd_toStartOf="@+id/NationalParkCategory"
+                app:layout_constraintStart_toEndOf="@+id/allCategory"
                 app:layout_constraintTop_toBottomOf="@+id/tv_category" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/NationalParkCategory"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
+                android:layout_marginStart="32dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="32dp"
                 android:src="@drawable/nationalpark"
                 app:layout_constraintEnd_toStartOf="@+id/NatureCategory"
+                app:layout_constraintStart_toEndOf="@+id/BeachCategory"
                 app:layout_constraintTop_toBottomOf="@+id/tv_category" />
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -86,7 +89,7 @@
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="32dp"
+                android:layout_marginEnd="50dp"
                 android:src="@drawable/nature"
                 app:layout_constraintEnd_toStartOf="@+id/CategoryHistory"
                 app:layout_constraintTop_toBottomOf="@+id/tv_category" />
@@ -96,7 +99,7 @@
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="200dp"
+                android:layout_marginEnd="100dp"
                 android:src="@drawable/sejarah"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_category" />

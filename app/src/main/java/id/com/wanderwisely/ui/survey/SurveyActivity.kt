@@ -25,17 +25,22 @@ class SurveyActivity : AppCompatActivity() {
         binding = ActivitySurveyBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val surveyViewModelFactory = SurveyViewModelFactory(this@SurveyActivity.application)
-        surveyViewModel = ViewModelProvider(this, surveyViewModelFactory)[SurveyViewModel::class.java]
+        surveyViewModel =
+            ViewModelProvider(this, surveyViewModelFactory)[SurveyViewModel::class.java]
         binding.btnContinue.setOnClickListener {
             surveyViewModel.submitSurveyData(selectedHobbies, selectedTypes, budgetMin, budgetMax)
         }
-        surveyViewModel.surveyData.observe(this){data->
+        surveyViewModel.surveyData.observe(this) { data ->
             if (data != null && selectedHobbies.isNotEmpty() && selectedTypes.isNotEmpty() && (budgetMin != 0 || budgetMax != 0)) {
                 val intent = Intent(this, HomeActivity::class.java)
                 startActivity(intent)
                 finish()
             } else {
-                Toast.makeText(this@SurveyActivity, "Please fill the survey completely", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this@SurveyActivity,
+                    "Please fill the survey completely",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
@@ -73,23 +78,40 @@ class SurveyActivity : AppCompatActivity() {
             }
         }
     }
-    fun onRadioButtonClicked(view: View){
+    fun onRadioButtonClicked(view: View) {
         if (view is RadioButton) {
             val isChecked = view.isChecked
-            when (view.id) {
-                R.id.type1 -> if (isChecked) {
-                    budgetMax = 50000
-                }
-                R.id.type2 -> if (isChecked) {
-                    budgetMin = 50000
-                    budgetMax = 100000
-                }
-                R.id.type3 -> if (isChecked) {
-                    budgetMin = 100000
-                    budgetMax = 250000
-                }
-                R.id.type4 -> if (isChecked) {
-                    budgetMin = 250000
+
+            if (isChecked) {
+                when (view.id) {
+                    R.id.type1 -> {
+                        binding.type2.isChecked = false
+                        binding.type3.isChecked = false
+                        binding.type4.isChecked = false
+                        budgetMin = 0
+                        budgetMax = 50000
+                    }
+                    R.id.type2 -> {
+                        binding.type1.isChecked = false
+                        binding.type3.isChecked = false
+                        binding.type4.isChecked = false
+                        budgetMin = 50000
+                        budgetMax = 100000
+                    }
+                    R.id.type3 -> {
+                        binding.type1.isChecked = false
+                        binding.type2.isChecked = false
+                        binding.type4.isChecked = false
+                        budgetMin = 100000
+                        budgetMax = 250000
+                    }
+                    R.id.type4 -> {
+                        binding.type1.isChecked = false
+                        binding.type2.isChecked = false
+                        binding.type3.isChecked = false
+                        budgetMin = 250000
+                        budgetMax = Int.MAX_VALUE
+                    }
                 }
             }
         }
