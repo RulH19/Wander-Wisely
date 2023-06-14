@@ -2,6 +2,7 @@ package id.com.wanderwisely.ui.home.adapter
 
 import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.paging.PagingData
 import androidx.paging.PagingDataAdapter
@@ -48,6 +49,7 @@ class WisataAdapter : PagingDataAdapter<WisataResponse, WisataAdapter.WisataView
                 intentDetail.putExtra("name", wisata.name)
                 itemView.context.startActivity(intentDetail)
             }
+            binding.favorite.visibility = View.GONE
         }
     }
     suspend fun filterData(query: String?, category: String?) {
